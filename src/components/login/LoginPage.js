@@ -5,15 +5,6 @@ class HomePage extends React.Component {
     render() {
         return(
           <div>
-            <header className="header">
-                <div className="container">
-                    <nav>
-                        <ul className="nav">
-                        <li className="WeConnect"><a href="index.html">WeConnect</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
             <div className="hero">
                 <div className="fcontainer">
                     <form action="business.html">
@@ -34,17 +25,11 @@ class HomePage extends React.Component {
 
                         <div className="fcontainer">
                             <Link to="index"><button type="button" className="cancelbtn">Cancel</button></Link>
-                            <span className="psw"><a href="#">Forgot password?</a></span>
+                            <span className="psw"><Link to="forgotPassword">Forgot password?</Link></span>
                         </div>
                     </form>
                 </div>
             </div>
-
-            <footer classNameName="footer">
-                <div classNameName="container">
-                    <p>Copyright &copy; 2018. All rights reserved.</p>
-                </div>
-            </footer>
           </div>
         );
     }
