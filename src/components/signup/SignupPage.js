@@ -1,12 +1,27 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import * as registerActions from '../../actions/registerActions';
+import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
 
 class SignupPage extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+        };
+        this.Register = this.Register.bind(this)
+      }
+
+    Register() {
+        this.props.registerUser(this.state.user)
+    }
+
     render() {
         return(
           <div>
             <div className="hero">
                 <div className="fcontainer">
-                    <form action="business.html">
+                    <form onSubmit={this.Register}>
                         <span className="formtitle">Login Form</span>
 
                         <div className="fcontainer">
@@ -20,24 +35,37 @@ class SignupPage extends React.Component {
                             <input type="password" placeholder="Enter Password" name="psw" required />
 
                             <label><b>Confirm Password</b></label>
-                            <input type="text" placeholder="Confirm Password" name="cpsw" required />
+                            <input type="password" placeholder="Confirm Password" name="cpsw" required />
 
                             <button type="submit" >Sign Up</button>
                             <label>
-                            <input type="checkbox" checked="checked" name="remember" /> Remember me
+                            <input type="checkbox" defaultChecked name="remember" /> Remember me
                             </label>
                         </div>
                     </form>
                 </div>
             </div>
-
-            <footer classNameName="footer">
-                <div classNameName="container">
-                    <p>Copyright &copy; 2018. All rights reserved.</p>
-                </div>
-            </footer>
           </div>
         );
     }
 }
-export default SignupPage;
+
+SignupPage.propTypes = {
+    user: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(registerActions, dispatch)
+    };
+}
+
+
+function mapStateToProps(state, ownProps) {
+    return {
+        user: state.Register
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
