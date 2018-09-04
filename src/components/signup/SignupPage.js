@@ -8,12 +8,27 @@ class SignupPage extends React.Component {
     constructor() {
         super();
         this.state = {
+            username: '',
+            email: '',
+            password: '',
+            confirm_password: ''
         };
         this.Register = this.Register.bind(this)
       }
+    handleChange = e => {
+        let value = {};
+        value[e.target.name] = e.target.value;
+        this.setState(value);
+    }
 
-    Register() {
-        this.props.registerUser(this.state.user)
+    Register = e => {
+        e.preventDefault();
+        const username = this.state.username;
+        const email = this.state.email;
+        const password = this.state.password;
+        const confirm_password = this.state.confirm_password;
+        console.log(this.props)
+        this.props.actions.registerUser({username, email, password, confirm_password})
     }
 
     render() {
@@ -22,25 +37,23 @@ class SignupPage extends React.Component {
             <div className="hero">
                 <div className="fcontainer">
                     <form onSubmit={this.Register}>
-                        <span className="formtitle">Login Form</span>
+                        <span className="formtitle">Signup Form</span>
 
                         <div className="fcontainer">
                             <label><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="uname" required />
+                            <input type="text" onChange={this.handleChange} placeholder="Enter Username" name="username" required />
 
                             <label><b>Email</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required />
+                            <input type="text" onChange={this.handleChange} placeholder="Enter Email" name="email" required />
 
                             <label><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required />
+                            <input type="password" onChange={this.handleChange} placeholder="Enter Password" name="password" required />
 
                             <label><b>Confirm Password</b></label>
-                            <input type="password" placeholder="Confirm Password" name="cpsw" required />
+                            <input type="password" onChange={this.handleChange} placeholder="Confirm Password" name="confirm_password" required />
 
                             <button type="submit" >Sign Up</button>
-                            <label>
-                            <input type="checkbox" defaultChecked name="remember" /> Remember me
-                            </label>
+                            
                         </div>
                     </form>
                 </div>
@@ -51,8 +64,8 @@ class SignupPage extends React.Component {
 }
 
 SignupPage.propTypes = {
-    user: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    // user: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired,
 }
 
 function mapDispatchToProps(dispatch) {
@@ -64,7 +77,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        user: state.Register
+        state: state.Register
     };
 }
 
