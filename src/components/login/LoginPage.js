@@ -1,26 +1,48 @@
 import React from 'react';
 import {Link} from 'react-router';
+import * as loginActions from '../../actions/loginActions';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
 
-class HomePage extends React.Component {
+class LoginPage extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            email: '',
+            password: ''
+        };
+        this.Login = this.Login.bind(this)
+      }
+
+    handleChange = e => {
+        let value = {};
+        value[e.target.name] = e.target.value;
+        this.setState(value);
+    }
+    Login = e => {
+        e.preventDefault();
+        const email = this.state.email;
+        const password = this.state.password;
+        console.log(this.props)
+        this.props.actions.loginUser({email, password})
+    }
     render() {
         return(
           <div>
             <div className="hero">
                 <div className="fcontainer">
-                    <form action="business.html">
+                    <form onSubmit={this.Login}>
                         <span className="formtitle">Login Form</span>
 
                         <div className="fcontainer">
-                            <label><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="uname" required />
+                            <label><b>Email</b></label>
+                            <input type="email" onChange={this.handleChange} placeholder="Enter Email" name="email" required />
 
                             <label><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required />
+                            <input type="password" onChange={this.handleChange} placeholder="Enter Password" name="password" required />
 
                             <button type="submit" >Login</button>
-                            <label>
-                            <input type="checkbox" checked="checked" name="remember" /> Remember me
-                            </label>
                         </div>
 
                         <div className="fcontainer">
@@ -34,4 +56,21 @@ class HomePage extends React.Component {
         );
     }
 }
-export default HomePage;
+LoginPage.propTypes = {
+    actions: PropTypes.object.isRequired,
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(loginActions, dispatch)
+    };
+}
+
+
+function mapStateToProps(state, ownProps) {
+    return {
+        state: state.Login
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
