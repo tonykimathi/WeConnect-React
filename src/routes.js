@@ -15,7 +15,7 @@ export default (
         <Route path='login' component={LoginPage} />
         <Route path='signup' component={SignupPage} />
         <Route path='businesses' component={BusinessesPage} />
-        <Route path='businesses/ :id' component={SingleBusinessPage} />
+        <Route path='businesses/:id' component={SingleBusinessPage} />
         <Route path='registerBusiness' component={RegisterBusinessPage} />
     </Route>
 );
