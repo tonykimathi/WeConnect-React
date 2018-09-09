@@ -2,7 +2,8 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
     message: '',
-    error: null
+    error: null,
+    auth_token: localStorage.getItem('auth_token')
 };
 
 export default function businessReducer(state=initialState, action) {
