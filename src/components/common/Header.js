@@ -16,7 +16,7 @@ class Header extends React.Component {
     render() {
         return (
             <header className="header">
-                <div className="container">
+                <div >
                     <nav>
                         <ul className="nav">
                             <li><IndexLink to="/" activeClassName="active">WeConnect</IndexLink></li>
