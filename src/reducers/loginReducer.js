@@ -15,7 +15,7 @@ export default function loginReducer(state=initialState, action) {
         return {...state,
             username: action.payload.username,
             auth_token: action.payload.auth_token,
-            email: action.data.email,
+            email: action.payload.email,
             message: 'Login Success',
             loggedIn: true
         };
