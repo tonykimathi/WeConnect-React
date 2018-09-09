@@ -40,7 +40,7 @@ export const createBusiness = data => {
     return dispatch => {
         const businesses_url = `${api_url}businesses`;
         axios.post(businesses_url, 
-            {businessName: data.business_name,
+            {business_name: data.business_name,
              description: data.description,
              category: data.category,
              location: data.location},

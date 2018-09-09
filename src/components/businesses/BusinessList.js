@@ -20,7 +20,7 @@ const BusinessList = ({businesses}) => {
                 </thead>
                 <tbody>
                     {businesses.map(business => 
-                    <BusinessListRow key={business.id} business={business}/> )}
+                    <BusinessListRow key={business.business_id} business={business}/> )}
                 </tbody>
             </table>
         </div>
