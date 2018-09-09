@@ -34,11 +34,10 @@
     text-align: right;
 }
 .hero2 {
-    background-image: url("../images/we-connect-hero.jpg");
+    /* background-image: url("../images/we-connect-hero.jpg"); */
     background-size: cover;
-    height: 750px;
+    min-height: 750px;
     display: block;
-    font: bold 40px "Microsoft Tai Le Bold", Calibri, Georgia;
     padding: 10px;
     color: #000066;
     text-align: left;
