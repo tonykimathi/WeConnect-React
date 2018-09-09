@@ -13,7 +13,6 @@ class SignupPage extends React.Component {
             password: '',
             confirm_password: ''
         };
-        this.Register = this.Register.bind(this)
       }
     handleChange = e => {
         let value = {};
