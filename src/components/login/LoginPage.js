@@ -12,8 +12,7 @@ class LoginPage extends React.Component {
             email: '',
             password: ''
         };
-        this.Login = this.Login.bind(this)
-      }
+       }
 
     handleChange = e => {
         let value = {};
@@ -57,7 +56,7 @@ class LoginPage extends React.Component {
     }
 }
 LoginPage.propTypes = {
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
 }
 
 function mapDispatchToProps(dispatch) {
