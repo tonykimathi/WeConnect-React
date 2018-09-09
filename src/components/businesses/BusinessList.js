@@ -1,7 +1,6 @@
 import React from 'react';
 import BusinessListRow from './BusinessListRow';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 
 const BusinessList = ({businesses}) => {
@@ -30,10 +29,5 @@ const BusinessList = ({businesses}) => {
 BusinessList.propTypes = {
     businesses: PropTypes.array.isRequired
 }
-function mapStateToProps (state) {
-    return {
-      businesses: state.businesses,
-    };
-  };
 
-export default connect(mapStateToProps)(BusinessList);
+export default BusinessList;

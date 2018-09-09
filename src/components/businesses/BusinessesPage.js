@@ -43,7 +43,7 @@ BusinessesPage.propTypes = {
 
 function MapStateToProps(state, ownProps) {
     return {
-        state: state.businesses
+        businesses: state.fetchBusinesses.businesses
     };
 }
 
