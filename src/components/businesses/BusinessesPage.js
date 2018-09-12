@@ -8,6 +8,9 @@ import PropTypes from 'prop-types';
 import BusinessList from './BusinessList';
 
 class BusinessesPage extends React.Component {
+    componentDidMount() {
+        this.props.actions.getAllBusinesses();
+      }
 
     render() {
         const {businesses} = this.props;

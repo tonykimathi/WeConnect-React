@@ -125,7 +125,7 @@ SingleBusinessPage.propTypes = {
 function MapStateToProps(state, ownProps) {
     return {
         business: state.fetchSingleBusiness.business,
-        token: state.Business.auth_token,
+        token: state.Login.auth_token,
         login: state.Login,
         reviews: state.fetchReviews.reviews
     };
