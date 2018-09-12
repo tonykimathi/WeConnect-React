@@ -14,32 +14,29 @@
 }
 .footer p {
     text-align: center;
-    font: 18px "Microsoft Tai Le Bold", Calibri, Georgia;
+    /* font: 18px "Microsoft Tai Le Bold", Calibri, Georgia; */
     margin: 0 ;
-}
-.nav li.WeConnect {
-    color: #fff;
-    display: block;
-    font: bold 140px "Times", Calibri, Georgia;
-    float: left;
+    padding: 10px;
 }
 .hero {
     background-image: url("../images/we-connect-hero.jpg");
     background-size: cover;
-    height: 750px;
+    height: 610px;
     display: block;
-    font: bold 40px "Microsoft Tai Le Bold", Calibri, Georgia;
+    /* font: bold 40px "Microsoft Tai Le Bold", Calibri, Georgia; */
     padding: 10px;
     color: #000066;
     text-align: right;
+ 
 }
 .hero2 {
     /* background-image: url("../images/we-connect-hero.jpg"); */
+    background-color: lightgrey;
     background-size: cover;
     min-height: 750px;
     display: block;
     padding: 10px;
-    color: #000066;
+    color: black;
     text-align: left;
 }
 .hero3 {
@@ -143,8 +140,8 @@
     color: #f2f2f2;
     float: right;
     display: block;
-    font: bold 24px "Microsoft Tai Le Bold", Calibri, Georgia;
-    padding: 10px;
+    font: 20px "Microsoft Tai Le Bold", Calibri, Georgia;
+    padding: 12px;
 
 }
 .nav li {
@@ -235,8 +232,10 @@ button:hover {
 
 /* Add padding to containers */
 .fcontainer {
-    padding: 16px;
-    display: block;
+    /* margin: 0 auto; */
+    /* width:20%; */
+    padding: 30px;
+    /* display: block; */
     text-align: center;
     font: 15px "Microsoft Tai Le Bold", Calibri, Georgia;
 }
