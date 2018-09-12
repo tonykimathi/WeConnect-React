@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 const BusinessList = ({businesses}) => {
     return (
         <div className="container">
-            <input type="text" id="myInput" placeholder="Filter" />
-            <input type="text" id="myInput2" placeholder="Search" />
-
             <table className="table">
                 <thead>
                 <tr >
