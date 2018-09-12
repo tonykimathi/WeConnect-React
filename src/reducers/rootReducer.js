@@ -1,17 +1,18 @@
 import {combineReducers} from 'redux';
 import Register from './registerReducer';
 import Login from './loginReducer';
-import Logout from './logoutReducer';
 import Business from './businessReducer';
 import {fetchBusinesses, fetchSingleBusiness} from './fetchBusinessReducer';
+import {createReview, fetchReviews} from './reviewReducer';
 
 const rootReducer = combineReducers({
     Register,
     Login,
-    Logout,
     Business,
     fetchBusinesses,
-    fetchSingleBusiness 
+    fetchSingleBusiness,
+    createReview,
+    fetchReviews
 });
 
 export default rootReducer;
