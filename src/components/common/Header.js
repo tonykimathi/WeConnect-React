@@ -1,5 +1,11 @@
 import React, {Fragment} from 'react';
-import { Link, IndexLink } from 'react-router';
+import {
+    Navbar,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+ } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -16,24 +22,32 @@ class Header extends React.Component {
     render() {
         return (
             <header className="header">
-                <div >
-                    <nav>
-                        <ul className="nav">
-                            <li><IndexLink to="/" activeClassName="active">WeConnect</IndexLink></li>
-                            <li><Link to="businesses" activeClassName="active">Businesses</Link></li>
-                            {this.props.stat.loggedIn ? (
-                            <Fragment>
-                            <li><Link to="login" onClick={this.Logout} activeClassName="active">Logout</Link></li>
-                            </Fragment>
-                            ) : (
-                            <Fragment>
-                            <li><Link to="signup" activeClassName="active">Sign Up</Link></li>
-                            <li><Link to="login" activeClassName="active">Login</Link></li>
-                            </Fragment>
-                            )}
-                        </ul>
-                    </nav>
-                </div>
+                <div>
+                <Navbar color="blue" dark expand="md">
+                <NavbarBrand href="/" >WeConnect</NavbarBrand>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink href="/businesses/" >Businesses</NavLink>
+                        </NavItem>
+                        {this.props.stat.loggedIn ? (
+                        <Fragment >
+                        <NavItem>
+                            <NavLink href="/login" onClick={this.Logout} >Logout</NavLink>
+                        </NavItem>
+                        </Fragment >
+                        ) : (
+                        <Fragment >
+                        <NavItem>
+                            <NavLink href="/signup" >Sign Up</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/login" >Login</NavLink>
+                        </NavItem>
+                        </Fragment >
+                        )}
+                    </Nav>
+                </Navbar>
+            </div>
             </header>
             );
 }
@@ -51,7 +65,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        stat: state.Logout
+        stat: state.Login
     };
 }
 
