@@ -7,6 +7,7 @@ import SignupPage from './components/signup/SignupPage';
 import BusinessesPage from './components/businesses/BusinessesPage';
 import RegisterBusinessPage from './components/businesses/RegisterBusinessPage';
 import SingleBusinessPage from './components/businesses/SingleBusinessPage';
+import EditBusinessPage from './components/businesses/EditBusinessPage';
 
 
 export default (
@@ -17,5 +18,6 @@ export default (
         <Route path='businesses' component={BusinessesPage} />
         <Route path='businesses/:id' component={SingleBusinessPage} />
         <Route path='registerBusiness' component={RegisterBusinessPage} />
+        <Route path='editBusiness/:id' component={EditBusinessPage} />
     </Route>
 );
