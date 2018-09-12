@@ -30,7 +30,7 @@ export default function businessReducer(state=initialState, action) {
         };
         case types.DELETE_BUSINESS:
         return {...state,
-            message: action.payload,
+            message: 'Business successfully deleted',
             error: false
         };
         case types.DELETE_BUSINESS_ERROR:
