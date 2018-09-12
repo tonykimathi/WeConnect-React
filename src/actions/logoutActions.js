@@ -6,7 +6,7 @@ import {browserHistory} from 'react-router';
 export const logoutUser = data => {
     return dispatch => {
         const logout_url = `${api_url}logout`;
-        axios.post(logout_url, {headers: requestHeader(data.auth_token)})
+        axios.post(logout_url, {}, {headers: requestHeader(data.auth_token)})
         .then(res => {
             localStorage.removeItem('email');
             localStorage.removeItem('password');

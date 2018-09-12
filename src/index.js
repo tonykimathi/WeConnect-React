@@ -12,6 +12,9 @@ import registerServiceWorker from './registerServiceWorker';
 const store = configureStore();
 store.dispatch(businessActions.getAllBusinesses(),
                businessActions.getSingleBusiness(),
+               businessActions.createBusiness(),
+               businessActions.editBusiness(),
+               businessActions.deleteBusiness()
             );
 
 ReactDOM.render(

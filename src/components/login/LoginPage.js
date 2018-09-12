@@ -4,6 +4,7 @@ import * as loginActions from '../../actions/loginActions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
+import { Button, Form, Label, Input, FormGroup } from 'reactstrap';
 
 class LoginPage extends React.Component {
     constructor() {
@@ -29,26 +30,30 @@ class LoginPage extends React.Component {
     render() {
         return(
           <div>
-            <div className="hero">
+            <div className="hero3">
                 <div className="fcontainer">
-                    <form onSubmit={this.Login}>
-                        <span className="formtitle">Login Form</span>
+                    <Form onSubmit={this.Login}>
+                        <h1>Login Here</h1>
 
                         <div className="fcontainer">
-                            <label><b>Email</b></label>
-                            <input type="email" onChange={this.handleChange} placeholder="Enter Email" name="email" required />
+                        <FormGroup>
+                            <Label>Email</Label>
+                            <Input type="email" onChange={this.handleChange} placeholder="Enter Email" name="email" required />
+                        </FormGroup>
+                        
+                        <FormGroup>
+                            <Label>Password</Label>
+                            <Input type="password" onChange={this.handleChange} placeholder="Enter Password" name="password" required />
+                        </FormGroup>
 
-                            <label><b>Password</b></label>
-                            <input type="password" onChange={this.handleChange} placeholder="Enter Password" name="password" required />
-
-                            <button type="submit" >Login</button>
-                        </div>
+                            <Button type="submit" >Login</Button>
+                         </div>
 
                         <div className="fcontainer">
-                            <Link to="index"><button type="button" className="cancelbtn">Cancel</button></Link>
+                            <Link to="index"><Button type="Button" className="cancelbtn">Cancel</Button></Link>
                             <span className="psw"><Link to="forgotPassword">Forgot password?</Link></span>
                         </div>
-                    </form>
+                    </Form>
                 </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import * as businessActions from '../../actions/businessActions';
+import { Button, Form, Label, Input, FormGroup } from 'reactstrap';
 
 class RegisterBusinessPage extends React.Component {
     constructor() {
@@ -28,7 +29,7 @@ class RegisterBusinessPage extends React.Component {
         const category = this.state.category;
         const location = this.state.location;
         console.log(this.props)
-        const auth_token = this.props.state;
+        const auth_token = this.props.token;
         this.props.actions.createBusiness({business_name, description, category, location, auth_token})
     }
     
@@ -36,29 +37,37 @@ class RegisterBusinessPage extends React.Component {
         return(
             <div className="hero">
                 <div className="fcontainer">
-                    <form onSubmit={this.addBusiness}>
-                    <span className="formtitle">Registration Form</span>
+                    <Form onSubmit={this.addBusiness}>
+                    <h1>Register Business</h1>
 
                     <div className="fcontainer">
-                        <label><b>Name</b></label>
-                        <input type="text" onChange={this.handleChange} placeholder="Business Name" name="business_name" required />
+                    <FormGroup>
+                        <Label>Business Name</Label>
+                        <Input type="text" onChange={this.handleChange} placeholder="Business Name" name="business_name" required />
+                    </FormGroup>
 
-                        <label><b>Description</b></label>
-                        <input type="text" onChange={this.handleChange} placeholder="Description" name="description" required />
+                    <FormGroup>
+                        <Label>Description</Label>
+                        <Input type="text" onChange={this.handleChange} placeholder="Description" name="description" required />
+                    </FormGroup>
 
-                        <label><b>Category</b></label>
-                        <input type="text" onChange={this.handleChange} placeholder="Category" name="category" required />
+                    <FormGroup>
+                        <Label>Category</Label>
+                        <Input type="text" onChange={this.handleChange} placeholder="Category" name="category" required />
+                    </FormGroup>
 
-                        <label><b>Location</b></label>
-                        <input type="text" onChange={this.handleChange} placeholder="Location" name="location" required />
+                    <FormGroup>
+                        <Label>Location</Label>
+                        <Input type="text" onChange={this.handleChange} placeholder="Location" name="location" required />
+                    </FormGroup>
 
-                        <button type="submit">Submit</button>
+                        <Button type="submit">Submit</Button>
                     </div>
 
-                    <div className="fcontainer" style={{backgroundColor: '#f1f1f1'}}>
-                        <Link to="businesses"><button type="button" className="cancelbtn">Cancel</button></Link>
+                    <div style={{backgroundColor: '#f1f1f1'}}>
+                        <Link to="businesses"><Button type="button" className="cancelbtn">Cancel</Button></Link>
                     </div>
-                    </form>
+                    </Form>
 
                 </div>
             </div>
@@ -79,7 +88,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        state: state.Business.auth_token
+        token: state.Login.auth_token
     };
 }
 

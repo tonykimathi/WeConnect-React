@@ -25,6 +25,11 @@ export default function loginReducer(state=initialState, action) {
             loggedIn: false,
             error: true
         };
+        case types.LOGOUT_USER:
+        return {...state,
+            loggedIn: false,
+            message: 'Logout Success'
+        };
 
     default:
         return {...state}
