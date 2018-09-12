@@ -2,7 +2,6 @@ import * as types from './actionTypes';
 import axios from 'axios';
 import {api_url, requestHeader} from '../config';
 import {browserHistory} from 'react-router';
-import { logoutUser } from './logoutActions';
 
 export const getAllBusinesses = () => {
     return dispatch => {
@@ -20,9 +19,9 @@ export const getAllBusinesses = () => {
     };
 };
 
-export const getSingleBusiness = data => {
+export const getSingleBusiness = id => {
     return dispatch => {
-        const get_single_businesses_url = `${api_url}businesses/${data.business_id}`;
+        const get_single_businesses_url = `${api_url}businesses/${id}`;
         axios.get(get_single_businesses_url)
         .then(res => {
             const business = res.data.single_business;
@@ -44,17 +43,26 @@ export const createBusiness = data => {
              description: data.description,
              category: data.category,
              location: data.location},
+             
             {headers: requestHeader(data.auth_token)}
         )
         .then(res => {
             const message = res.data.message;
             dispatch({ type: types.CREATE_BUSINESS, payload: {message} });
+            // dispatch({ type: types.GET_ALL_BUSINESSES });
             browserHistory.push('/businesses');
         })
         .catch(error => {
+            console.log(error);
             if (error.response.status === 401) {
                 dispatch({ type: types.CREATE_BUSINESS_ERROR, payload: {error: error.response.data.message} });
             };
+            /**if (error.response){
+                return { errors: error.response
+            }
+            else{
+                return response.message
+            }**/
         })
     };
     
@@ -85,20 +93,22 @@ export const editBusiness = data => {
     
 };
 
-export const deleteBusiness = data => {
+export const deleteBusiness = (token, id) => {
+    console.log(token);
     return dispatch => {
-        const delete_businesses_url = `${api_url}businesses/${data.business_id}`;
+        const delete_businesses_url = `${api_url}businesses/${id}`;
         axios.delete(delete_businesses_url,
-            {headers: requestHeader(data.auth_token)}
+            {headers: requestHeader(token)}
         )
         .then(res => {
-            const message = res.data.message;
+            const message = res.data.message
             dispatch({ type: types.DELETE_BUSINESS, payload: {message} });
             browserHistory.push('/businesses');
         })
         .catch(error => {
+            console.log(error.response)
             if (error.response.status === 401) {
-                dispatch(logoutUser({ auth_token: data.auth_token }));
+                dispatch({ type: types.DELETE_BUSINESS_ERROR, payload: {error: error.response.data.message} });
             };
         })
     };
