@@ -94,8 +94,7 @@ export const editBusiness = data => {
 };
 
 export const deleteBusiness = (token, id) => {
-    console.log(token);
-    return dispatch => {
+     return dispatch => {
         const delete_businesses_url = `${api_url}businesses/${id}`;
         axios.delete(delete_businesses_url,
             {headers: requestHeader(token)}

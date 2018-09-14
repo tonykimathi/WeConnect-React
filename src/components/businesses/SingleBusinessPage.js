@@ -25,18 +25,15 @@ class SingleBusinessPage extends React.Component {
         });
     };
 
-    fetchSingleBusiness = (business_id) => {
-        this.props.actions.getSingleBusiness(business_id);
-    };
 
     componentDidMount() {
         const business_id = this.props.params.id;
-        this.fetchSingleBusiness(business_id);
+        this.props.actions.getSingleBusiness(business_id);
+        this.props.reviewActions.getAllReviews(business_id);
       }
 
     deleteBusiness = () => {
         const auth_token = this.props.token;
-        console.log("kjsdhfnjsdnfoooo "+auth_token);
         const business_id = this.props.business.business.business_id;
         this.props.actions.deleteBusiness(auth_token, business_id);
     };
@@ -45,8 +42,9 @@ class SingleBusinessPage extends React.Component {
         e.preventDefault();
         const auth_token = this.props.token;
         const business_id = this.props.business.business.business_id;
-        const body = this.reviews.body;
-        this.props.reviewActions.createReview({ auth_token, business_id, body });
+        const body = this.state.body;
+        this.props.reviewActions.createReview({ auth_token, business_id, body })
+            .then(()=>this.setState({body: ''}));
         this.forceUpdate();
     };
 
@@ -96,7 +94,7 @@ class SingleBusinessPage extends React.Component {
                         <ReviewList reviews = {reviews} />
                         <FormGroup className="col-sm-6">
                             <Label for="review">Review Business</Label>
-                            <Input onChange={this.handleChange} type="textarea" name="text" id="review" />
+                            <Input onChange={this.handleChange} type="textarea" name="body" value={this.state.body}  id="review" />
                             <br/>
                             <Button className="col-sm-4" onClick={this.addReview} color="secondary" size="sm" >Publish</Button>
                         </FormGroup>

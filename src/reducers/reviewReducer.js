@@ -34,7 +34,7 @@ export const fetchReviews = (state=reviewsInitialState, action) => {
         case types.GET_ALL_REVIEWS:
             return {...state,
                 message: 'Reviews retrieved successfully',
-                businesses: action.payload.businesses,
+                reviews: action.payload.reviews,
                 error: false
             };
         case types.GET_ALL_REVIEWS_ERROR:
